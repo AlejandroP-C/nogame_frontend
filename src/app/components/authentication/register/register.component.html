@@ -1,0 +1,43 @@
+<div class="register-box">
+
+    <h2>Register</h2>
+
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div>    
+            <span class="p-float-label">
+                <input id="float-input" type="text" pInputText [(ngModel)]="username" name="username" required>
+                <label for="float-input">Username</label>
+            </span>
+
+            <span class="p-float-label">
+                <input id="float-input" type="text" pInputText [(ngModel)]="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" required>
+                <label for="float-input">Email</label>
+            </span>
+
+            <span class="p-float-label">
+                <input id="float-input" type="password" pInputText [(ngModel)]="password" name="password" required>
+                <label for="float-input">Password</label>
+            </span>
+
+            <span class="p-float-label">
+                <input id="float-input" type="password" pInputText [(ngModel)]="rPassword" name="rPassword" required>
+                <label for="float-input">Repeat your password</label>
+            </span>
+        </div>
+
+        <div class="send">
+
+            <button class="register" routerLink="/login">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+            </button>
+
+        </div>
+
+    </form>
+
+</div>

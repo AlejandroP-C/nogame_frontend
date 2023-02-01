@@ -1,0 +1,42 @@
+<div class="login-box">
+
+    <h2>Login</h2>
+
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div>
+            <span class="p-float-label">
+                <input id="float-input" type="text" pInputText [(ngModel)]="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" required> 
+                <label for="float-input">Email</label>
+            </span>
+    
+            <span class="p-float-label">
+                <input id="float-input" type="password" pInputText [(ngModel)]="password" name="password" required>
+                <label for="float-input">Password</label>
+            </span>
+
+        </div>
+        
+        <div class="send">
+
+            <button class="login">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Play
+            </button>
+
+            <button class="register" routerLink="/register">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Register
+            </button>
+    
+        </div>
+
+    </form>
+    
+</div>
