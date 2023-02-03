@@ -1,0 +1,80 @@
+@import url('https://fonts.cdnfonts.com/css/star-wars');
+@import url('https://fonts.cdnfonts.com/css/neuropol-x');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    place-items: center;
+}
+
+img {
+    border-radius: 35px;
+    object-fit: cover;
+
+    -webkit-box-reflect: below 2px linear-gradient(transparent, transparent, #0004);
+    transform-origin: center;
+    transition: 0.5s;
+}
+
+div.title {
+    padding-top: 10rem;
+}
+
+div.title h3 {
+    font-family: 'Star Wars', sans-serif;
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+div.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 20em;
+    grid-row-gap: 0px;
+    margin: 14% 5% auto;
+    justify-items: center;
+}
+
+.container:hover img {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.container img:hover {
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    // height: fit-content;
+    width: 256px;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.commandant:hover .overlay,
+.miner:hover .overlay,
+.researcher:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    font-family: 'Neuropol X Free', sans-serif;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}

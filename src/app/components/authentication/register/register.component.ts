@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/interfaces/user';
+import { SpringService } from 'src/app/services/spring.service';
 
 @Component({
   selector: 'app-register',
@@ -7,25 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  username! : string;
+  username!: string;
 
-  email! : string;
+  email!: string;
 
-  password! : string;
+  password!: string;
 
-  rPassword! : string;
+  rPassword!: string;
 
-  constructor() {}
+  constructor(private spring: SpringService, private router: Router) { }
 
   public onSubmit(): void {
 
-    console.log(this.username);
-    console.log(this.email);
-    console.log(this.password);  
-    console.log(this.rPassword);
+    console.log("aaaaaaaaa");
+    
+
+    let user: User = { email: this.email, password: this.password };
+
+    this.spring.register(user).subscribe({
+      next: user => {
+        console.log(user);
+        // this.router.navigate(['/login']);
+      },
+      error: err => { console.log(err); }
+    });
 
   }
-  
-  ngOnInit(): void {}
+
+  ngOnInit(): void { }
 
 }

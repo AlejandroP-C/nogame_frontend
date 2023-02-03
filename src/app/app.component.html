@@ -1,1 +1,20 @@
 <router-outlet></router-outlet>
+
+
+<p-dialog header="Una mejor experiencia de juego" [(visible)]="display"
+    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '40vw'}" [draggable]="false"
+    [resizable]="false">
+
+    <p>
+        Desde el equipo de desarrollo de Nogame, te recomendamos que juegues a pantalla completa.
+        Al aceptar este cuadro de diálogo, el propio navegador lo hará automáticamente por ti.
+        Siempre puedes utilizar la tecla "F11" de tu teclado para revertirlo.
+    </p>
+    <p>Disfruta de la experiencia.</p>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="display=false" (click)="fullScreen()" label="Ok"
+            styleClass="p-button-text"></p-button>
+    </ng-template>
+
+</p-dialog>

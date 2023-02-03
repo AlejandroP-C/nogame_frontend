@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { SpringService } from 'src/app/services/spring.service';
 
@@ -9,11 +10,11 @@ import { SpringService } from 'src/app/services/spring.service';
 })
 export class LoginComponent implements OnInit {
 
-  email! : string;
+  email!: string;
 
-  password! : string;
+  password!: string;
 
-  constructor(private spring: SpringService) { }
+  constructor( private spring: SpringService, private router: Router ) { }
 
   public onSubmit(): void {
 
@@ -22,13 +23,13 @@ export class LoginComponent implements OnInit {
     this.spring.login(user).subscribe({
       next: user => {
         console.log(user);
-        // this.router.navigate(['/home']);
+        this.router.navigate(['/type']);
       },
       error: err => { console.log(err); }
     });
 
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 }

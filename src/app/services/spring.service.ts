@@ -35,4 +35,18 @@ export class SpringService {
     );
   }
 
+  register(user: User) : Observable<any> {
+    return this.http
+    .post<{}>(`${environment.supabaseUrl}/auth/v1/signup`, JSON.stringify(user), this.httpOptions)
+    .pipe(
+      map((response) => {
+        this.userSubject.next(user);
+        return user;
+      }),
+      catchError((resp: HttpErrorResponse) =>
+        throwError(() => alert("¡Error! Credenciales incorrectas."))
+      )
+    );
+  }
+
 }
