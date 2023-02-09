@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { SpringService } from 'src/app/services/spring.service';
-import { SupabaseService } from 'src/app/services/supabase/supabase.service';
 
 @Component({
   selector: 'app-login',
@@ -33,8 +32,7 @@ export class LoginComponent implements OnInit {
             } else { this.router.navigate(['/main']) }  
           }
         );
-      },
-      error: err => { this.display = true; }
+      }
     });
 
   }

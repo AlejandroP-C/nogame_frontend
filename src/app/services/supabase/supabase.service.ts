@@ -20,7 +20,7 @@ export class SupabaseService {
 
     return this.http
     .post<{}>(`${environment.supabaseUrl}/rest/v1/${URI}`, JSON.stringify(data), headersAux)
-    .pipe( tap((response) => { console.log(response); }) );
+    // .pipe( tap((response) => { console.log(response); }) );
 
   }
 
