@@ -21,14 +21,14 @@ export class SpringService {
   userSubject = new Subject<User>();
   logged = new BehaviorSubject<boolean>(false);
 
-  localstorageLogin(userTk: string, role: string, expires_in: string) {
+  localstorageLogin(userTk: string, expires_in: string, email: string) {
     const now = new Date();
     const Token = {
       token: userTk,
       expiration: now.getTime() + parseInt(expires_in) * 1000,
     };
+    localStorage.setItem('email', email);
     localStorage.setItem('userTk', JSON.stringify(Token));
-    localStorage.setItem('role', role);
     this.logged.next(true);
   }
 
@@ -36,18 +36,16 @@ export class SpringService {
     return this.http
       .post<{
         access_token: string,
-        role: string,
         expires_in: string;
+        email: string,
       }>(`${environment.supabaseUrl}/auth/v1/token?grant_type=password`, JSON.stringify(user), httpOptions)
       .pipe(
         map((response) => {
-          console.log(response);
-
           this.userSubject.next(user);
           this.localstorageLogin(
             response.access_token,
-            response.role,
             response.expires_in,
+            user.email
           );
           return user;
         })
@@ -67,7 +65,7 @@ export class SpringService {
 
   logout() {
     localStorage.removeItem('userTk');
-    localStorage.removeItem('role');
+    localStorage.removeItem('email');
     this.logged.next(false);
     setTimeout(() => { this.router.navigate(['/login']) }, 600);
   }
@@ -81,7 +79,7 @@ export class SpringService {
         return true;
       } else {
         localStorage.removeItem('userTk');
-        localStorage.removeItem('role');
+        localStorage.removeItem('email');
         localStorage.removeItem('expiration');
         this.router.navigate(['login']);
         return false;

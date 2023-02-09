@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private spring: SpringService,
-    private supabaseService: SupabaseService,
     private router: Router
   ) { }
 
@@ -28,7 +27,11 @@ export class LoginComponent implements OnInit {
     this.spring.login(user).subscribe({
       next: user => {
         this.spring.isNewPlayer(user).subscribe(
-          (response) => { console.log(response); }
+          (response) => { 
+            if (response) {
+              this.router.navigate(['/type'])
+            } else { this.router.navigate(['/main']) }  
+          }
         );
       },
       error: err => { this.display = true; }

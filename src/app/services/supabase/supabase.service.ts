@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { environment, httpOptions } from 'src/environments/environment';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class SupabaseService {
 
   constructor(private http: HttpClient) { }
 
-  insertData(URI: string, token: string, data: string) {  
+  insertData(URI: string, token: string, data: any) {  
 
     let headersAux = {
       ...httpOptions,
