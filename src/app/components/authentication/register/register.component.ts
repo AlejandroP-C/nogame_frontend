@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { SpringService } from 'src/app/services/spring.service';
+import { SupabaseService } from 'src/app/services/supabase/supabase.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -18,21 +20,22 @@ export class RegisterComponent implements OnInit {
 
   rPassword!: string;
 
-  constructor(private spring: SpringService, private router: Router) { }
+  constructor(
+    private spring: SpringService,
+    private supabaseService: SupabaseService,
+    private router: Router
+  ) { }
 
   public onSubmit(): void {
-
-    console.log("aaaaaaaaa");
-    
 
     let user: User = { email: this.email, password: this.password };
 
     this.spring.register(user).subscribe({
       next: user => {
-        console.log(user);
-        // this.router.navigate(['/login']);
-      },
-      error: err => { console.log(err); }
+        let updateUser = { ...user, nickname: this.username }
+        this.supabaseService.insertData('user', environment.supabaseKey, updateUser).subscribe();
+        this.router.navigate(['/login']);
+      }
     });
 
   }

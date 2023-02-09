@@ -16,24 +16,32 @@
             </span>
 
             <span class="p-float-label">
-                <input id="float-input" type="password" pInputText [(ngModel)]="password" name="password" required>
+                <input id="float-input" type="password" pInputText [(ngModel)]="password" minlength="8" name="password" required>
                 <label for="float-input">Password</label>
             </span>
 
             <span class="p-float-label">
-                <input id="float-input" type="password" pInputText [(ngModel)]="rPassword" name="rPassword" required>
+                <input id="float-input" type="password" pInputText [(ngModel)]="rPassword" minlength="8" name="rPassword" required>
                 <label for="float-input">Repeat your password</label>
             </span>
         </div>
 
         <div class="send">
 
-            <button class="register">
+            <button *ngIf="registerForm.form.valid" class="register">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Submit
+            </button>
+
+            <button class="login" routerLink="/login">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                volver
             </button>
 
         </div>

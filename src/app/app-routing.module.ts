@@ -4,19 +4,22 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { PlayerTypeComponent } from './components/cards/player-type/player-type.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { LoggedGuard } from './guards/logged.guard';
+import { NoLoggedGuard } from './guards/no-logged.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'type', component: PlayerTypeComponent},
-  { path: 'main', component: MainPageComponent},
+  
+  { path: 'login', component: LoginComponent, canActivate : [LoggedGuard]},
+  { path: 'register', component: RegisterComponent, canActivate : [LoggedGuard]},
+  { path: 'type', component: PlayerTypeComponent, canActivate : [NoLoggedGuard] },
+  { path: 'main', component: MainPageComponent, canActivate: [NoLoggedGuard]},
   
   { path: '', pathMatch: 'full', redirectTo: 'login' }
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

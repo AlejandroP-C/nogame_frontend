@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { SpringService } from 'src/app/services/spring.service';
+import { SupabaseService } from 'src/app/services/supabase/supabase.service';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,14 @@ import { SpringService } from 'src/app/services/spring.service';
 export class LoginComponent implements OnInit {
 
   email!: string;
-
   password!: string;
+  display: boolean = false;
 
-  constructor( private spring: SpringService, private router: Router ) { }
+  constructor(
+    private spring: SpringService,
+    private supabaseService: SupabaseService,
+    private router: Router
+  ) { }
 
   public onSubmit(): void {
 
@@ -22,10 +27,11 @@ export class LoginComponent implements OnInit {
 
     this.spring.login(user).subscribe({
       next: user => {
-        console.log(user);
-        this.router.navigate(['/type']);
+        this.spring.isNewPlayer(user).subscribe(
+          (response) => { console.log(response); }
+        );
       },
-      error: err => { console.log(err); }
+      error: err => { this.display = true; }
     });
 
   }
