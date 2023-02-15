@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
-import { SpringService } from '../services/spring.service';
+import { LocalService } from '../services/local.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoLoggedGuard implements CanActivate {
 
-  constructor(private spring: SpringService) { }
+  constructor(private localService: LocalService) { }
 
   canActivate(
 
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
 
-    let isLoggedIn = this.spring.isLogged();
+    let isLoggedIn = this.localService.isLogged();
 
     if (isLoggedIn) { return true } else { return false; }
 

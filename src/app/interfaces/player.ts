@@ -1,5 +1,6 @@
 export interface Player {
-    user: string;
-    level?: string;
-    type: string;
+    user: string,
+    level?: string,
+    type?: string,
+    planet? :string
 }

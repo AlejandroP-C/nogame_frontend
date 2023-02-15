@@ -24,7 +24,16 @@ export class PanelMenuComponent implements OnInit {
       {
         label: 'Recursos',
         icon: 'pi pi-pw pi-box',
-        routerLink: ['/resources']
+        // routerLink: ['/resources']
+      },
+      {
+        label: '',
+        icon: '',
+      },
+      {
+        label: 'Cuenta',
+        icon: 'pi pi-pw pi-user',
+        routerLink: ['/account']
       }
     ];
   }

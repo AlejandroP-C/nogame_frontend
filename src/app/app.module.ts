@@ -11,6 +11,8 @@ import { RegisterComponent } from './components/authentication/register/register
 import { PlayerTypeComponent } from './components/cards/player-type/player-type.component';
 import { PanelMenuComponent } from './components/shared/panel-menu/panel-menu.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { UserProfileComponent } from './components/authentication/user-profile/user-profile.component';
+import { LogoutButtonComponent } from './components/shared/logout-button/logout-button.component';
 
 //? Angular Vanilla
 import { HttpClientModule } from '@angular/common/http';
@@ -31,7 +33,9 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     PlayerTypeComponent,
     PanelMenuComponent,
     PanelMenuComponent,
-    MainPageComponent
+    MainPageComponent,
+    UserProfileComponent,
+    LogoutButtonComponent
   ],
   imports: [
     BrowserModule,

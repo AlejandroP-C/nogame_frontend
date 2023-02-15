@@ -30,5 +30,22 @@ export class SupabaseService {
 
     return this.http.get<any[]>(`${environment.supabaseUrl}/rest/v1/${URI}`, headersAux);
   }
+
+  
+  // ? Supabase [GET] Methods
+
+  getPlayerData(email: string) : Observable<any[]> {
+
+    return this.getData(`player?user=eq.${email}&select=*`, environment.supabaseKey);
+    // .pipe( tap((response) => { console.log(response); }) );
+
+  }
+
+  getUserData(email: string) : Observable<any[]> {
+
+    return this.getData(`user?email=eq.${email}&select=*`, environment.supabaseKey);
+    // .pipe( tap((response) => { console.log(response); }) );
+
+  } 
   
 }

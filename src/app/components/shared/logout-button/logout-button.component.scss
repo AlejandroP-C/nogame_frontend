@@ -1,0 +1,21 @@
+img.logout {
+    cursor: pointer;
+    transform: scale(.4);
+    margin-left: 95%;
+}
+
+@media only screen and (max-width: 1156px) {
+
+    img.logout {
+        margin-left: 92%;
+    }
+
+}
+
+@media only screen and (max-width: 756px) {
+
+    img.logout {
+        margin-left: 87%;
+    }
+
+}

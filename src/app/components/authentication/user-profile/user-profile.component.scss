@@ -1,0 +1,286 @@
+$accent-color: #e7e7e7;
+$brand-color: #fe4141;
+$dark-color: #1e1b26;
+
+.container {
+   margin: -25rem auto auto;
+   transform: scale(.8);
+
+   display: grid;
+    grid-template-columns: repeat(2, .3fr);
+    grid-template-rows: repeat(2, .3fr);
+    justify-content: center;
+}
+
+.card-container {
+    width: 375px;
+    height: 650px;
+    background-color: #1e1b26;
+    // margin: 60px auto 0 25rem;
+    box-shadow: 5px 5px 115px -14px black;
+    border-radius: 4px;
+
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: center; 
+
+}
+
+.user-img {
+    width: 100%;
+    height: 380px;
+    background-image: url(/assets/images/playerTypes/commandant.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 111 !important;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
+            color-stop(0.00, rgba(0, 0, 0, 1)),
+            color-stop(0.35, rgba(0, 0, 0, 1)),
+            color-stop(0.50, rgba(0, 0, 0, 1)),
+            color-stop(0.65, rgba(0, 0, 0, 1)),
+            color-stop(0.85, rgba(0, 0, 0, 0.6)),
+            color-stop(1.00, rgba(0, 0, 0, 0)));
+
+    position: relative;
+
+}
+
+.user {
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.06) 39%, rgba(30, 27, 38, 0.88) 53%, rgba(30, 27, 38, 1) 55%);
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.06) 39%, rgba(30, 27, 38, 0.88) 53%, rgba(30, 27, 38, 1) 55%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.06) 39%, rgba(30, 27, 38, 0.88) 53%, rgba(30, 27, 38, 1) 55%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#1e1b26', GradientType=0);
+
+    position: absolute;
+    background-size: contain;
+    background-size: cover;
+    z-index: 1 !important;
+    width: 375px;
+    display: block;
+    border-radius: 4px;
+}
+
+.text-user-cont {
+    padding: 0px 12px;
+    text-align: justify;
+}
+
+
+/* TYPOGRAPHY STARTS */
+
+/* Fonts */
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic);
+
+$heading-font-family: 'Montserrat', sans-serif;
+$paragraph-font-family: 'Open Sans', sans-serif;
+
+$light: 300;
+$regular: 400;
+$semi-bold: 600;
+$bold: 700;
+$font-regular: 400;
+$mont-bold: 700;
+
+$text-movie-title: 36px;
+$text-summary: 12px;
+$text-action-btn: 14px;
+$text-movie-description: 12px;
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: $heading-font-family;
+    color: $accent-color;
+    margin: 0px;
+}
+
+h1 {
+    font-size: $text-movie-title;
+    font-weight: $font-regular;
+}
+
+h3 {
+    font-size: $text-action-btn;
+    font-weight: $font-regular;
+    color: $brand-color;
+}
+
+h5 {
+    font-size: $text-summary;
+    font-weight: $font-regular;
+}
+
+.level {
+    margin: 0px;
+    padding: 0px;
+
+    li {
+        font-family: $paragraph-font-family;
+        font-size: 14px;
+        color: darken($accent-color, 40%);
+        width: auto;
+        display: block;
+        float: left;
+        margin-right: 6px;
+        font-weight: $semi-bold;
+    }
+}
+
+/* TYPOGRAPHY ENDS */
+
+/** GRID STARTS **/
+
+.thegrid {
+    margin: 0 auto;
+}
+
+.elements-distance {
+    margin: 0px
+}
+
+.mr-grid {
+    width: 100%;
+}
+
+.mr-grid:before,
+.mr-grid:after {
+    content: "";
+    display: table;
+}
+
+.mr-grid:after {
+    clear: both;
+}
+
+.mr-grid {
+    *zoom: 1;
+}
+
+.col1,
+.col3,
+.col3rest,
+.col4,
+.col4rest,
+.col5,
+.col5rest {
+    margin: 0% 0.5% 0.5% 0.5%;
+    padding: 1%;
+    float: left;
+    display: block;
+}
+
+/* Columns match, minus margin sum. E.G. margin-left+margin-right=1%, col2=50%-1% - added padding:1%*/
+
+.col1 {
+    padding-top: 2rem;
+    width: 98%;
+}
+
+.col2 {
+    width: 47%;
+}
+
+.col3 {
+    width: 30.3333333333%;
+}
+
+.col4 {
+    width: 22%;
+}
+
+.col5 {
+    width: 17%;
+}
+
+/* Columns match with their individual number. E.G. col3+col3rest=full width row */
+
+.col3rest {
+    width: 63.6666666667%;
+}
+
+.col4rest {
+    width: 72%;
+}
+
+.col5rest {
+    width: 77%;
+}
+
+.dribbble-link {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 50px;
+}
+
+/* World */
+
+
+div.world {
+    width: 375px;
+    height: 375px;
+    border-radius: 50%;
+    background: url(/assets/images/planets/demo.png);
+    box-shadow: inset 0 0 20px #000, inset -70px -10px 20px #000000ad;
+    animation: world 35s linear infinite;
+    opacity: .8;
+
+    grid-area: 1 / 2 / 2 / 3;
+    // justify-self: center;
+    // align-self: center;
+
+}
+
+@keyframes world {
+    0% {
+        background-position-x: 0;
+    }
+
+    100% {
+        background-position-x: -800px;
+    }
+
+}
+
+// @media only screen and (max-width: 1156px) {
+
+//     div.container {
+//         transform: scale(1.4);
+//         margin: -1em auto 2em;
+
+//     }
+
+// }
+
+// @media only screen and (max-width: 956px) {
+
+//     div.container {
+//         transform: scale(1.2);
+//     }
+
+// }
+
+// @media only screen and (max-width: 756px) {
+
+//     div.container {
+//         transform: scale(.9);
+//         margin: 1em auto 2em;
+
+//     }
+
+// }
+
+/* container-2 */
+
+div.container-2 {
+    grid-area: 2 / 2 / 3 / 3;
+    justify-self: center;
+
+}
