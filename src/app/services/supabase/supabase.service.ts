@@ -46,6 +46,13 @@ export class SupabaseService {
     return this.getData(`user?email=eq.${email}&select=*`, environment.supabaseKey);
     // .pipe( tap((response) => { console.log(response); }) );
 
-  } 
+  }
+
+  getPlanetData(email: string) : Observable<any[]> {
+
+    return this.getData(`planet?player=eq.${email}&select=*`, environment.supabaseKey);
+    // .pipe( tap((response) => { console.log(response); }) );
+
+  }
   
 }

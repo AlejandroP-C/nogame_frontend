@@ -28,7 +28,6 @@ $dark-color: #1e1b26;
 .user-img {
     width: 100%;
     height: 380px;
-    background-image: url(/assets/images/playerTypes/commandant.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -227,7 +226,6 @@ div.world {
     width: 375px;
     height: 375px;
     border-radius: 50%;
-    background: url(/assets/images/planets/demo.png);
     box-shadow: inset 0 0 20px #000, inset -70px -10px 20px #000000ad;
     animation: world 35s linear infinite;
     opacity: .8;

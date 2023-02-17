@@ -35,6 +35,10 @@ export class LocalService {
     this.supabaseService.getPlayerData(email).subscribe((tablePlayer) => { 
       localStorage.setItem('player', JSON.stringify(tablePlayer[0])) 
     });
+
+    this.supabaseService.getPlanetData(email).subscribe((tablePlanet) => { 
+      localStorage.setItem('planet', JSON.stringify(tablePlanet[0])) 
+    });
     
     localStorage.setItem('userTk', JSON.stringify(Token));
 

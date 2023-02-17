@@ -7,7 +7,7 @@
 
         <div class="user">
 
-            <div class="user-img"></div>
+            <div class="user-img" [ngStyle]="{'background': 'url(/assets/images/playerTypes/' + player.type + '.jpg) no-repeat 0 0 / cover'}"></div>
 
             <div class="text-user-cont">
 
@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="world"></div>
+    <div class="world" [style.background]="'url(/assets/images/planets/' + planet.image + '.png)'"></div>
 
     <div class="container-2"></div>
 
