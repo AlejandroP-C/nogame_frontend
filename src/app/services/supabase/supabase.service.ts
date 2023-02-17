@@ -55,4 +55,18 @@ export class SupabaseService {
 
   }
   
+  getStructures() : Observable<any[]> {
+
+    return this.getData(`structure?select=*`, environment.supabaseKey);
+    // .pipe( tap((response) => { console.log(response); }) );
+
+  }
+
+  getStructuresInPlanet(planetID: string) : Observable<any[]> {
+
+    return this.getData(`/resource_storage?select=*,planet!inner(*)&planet.id=eq.${planetID}`, environment.supabaseKey);
+    // .pipe( tap((response) => { console.log(response); }) );
+
+  }
+  
 }

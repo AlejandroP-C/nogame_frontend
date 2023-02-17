@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/authentication/register/register
 import { UserProfileComponent } from './components/authentication/user-profile/user-profile.component';
 import { PlayerTypeComponent } from './components/cards/player-type/player-type.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { ResourcesListComponent } from './components/resources/resources-list/resources-list.component';
 import { IsplayerGuard } from './guards/isplayer.guard';
 import { LoggedGuard } from './guards/logged.guard';
 import { NoLoggedGuard } from './guards/no-logged.guard';
@@ -15,6 +16,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate : [LoggedGuard]},
   { path: 'type', component: PlayerTypeComponent, canActivate : [NoLoggedGuard, IsplayerGuard] },
   { path: 'main', component: MainPageComponent, canActivate: [NoLoggedGuard]},
+
+  { path: 'resources/:id', component: ResourcesListComponent, canActivate: [NoLoggedGuard] },
+  // { path: 'resources', component: ResourcesListComponent, canActivate: [NoLoggedGuard]},
 
   { path: 'account', component: UserProfileComponent, canActivate: [NoLoggedGuard]},
   

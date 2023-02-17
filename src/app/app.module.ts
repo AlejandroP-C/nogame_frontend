@@ -24,6 +24,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { ResourcesListComponent } from './components/resources/resources-list/resources-list.component';
+import { ResourcesItemComponent } from './components/resources/resources-item/resources-item.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     PanelMenuComponent,
     MainPageComponent,
     UserProfileComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    ResourcesListComponent,
+    ResourcesItemComponent
   ],
   imports: [
     BrowserModule,
