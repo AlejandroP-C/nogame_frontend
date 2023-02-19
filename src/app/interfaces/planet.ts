@@ -3,5 +3,6 @@ export interface Planet {
     name: string,
     player: string,
     image: string,
+    first: boolean,
     created_at?: string
 }

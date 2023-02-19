@@ -13,6 +13,8 @@ import { PanelMenuComponent } from './components/shared/panel-menu/panel-menu.co
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { UserProfileComponent } from './components/authentication/user-profile/user-profile.component';
 import { LogoutButtonComponent } from './components/shared/logout-button/logout-button.component';
+import { ResourcesListComponent } from './components/resources/resources-list/resources-list.component';
+import { ResourcesItemComponent } from './components/resources/resources-item/resources-item.component';
 
 //? Angular Vanilla
 import { HttpClientModule } from '@angular/common/http';
@@ -24,8 +26,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
-import { ResourcesListComponent } from './components/resources/resources-list/resources-list.component';
-import { ResourcesItemComponent } from './components/resources/resources-item/resources-item.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { ResourcesItemComponent } from './components/resources/resources-item/re
     UserProfileComponent,
     LogoutButtonComponent,
     ResourcesListComponent,
-    ResourcesItemComponent
+    ResourcesItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +52,8 @@ import { ResourcesItemComponent } from './components/resources/resources-item/re
     DialogModule,
     ButtonModule,
     PanelMenuModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

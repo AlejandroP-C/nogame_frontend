@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, Subject } from 'rxjs';
 import { environment, httpOptions } from 'src/environments/environment';
+import { Player } from '../interfaces/player';
 import { User } from '../interfaces/user';
 import { LocalService } from './local.service';
 import { SupabaseService } from './supabase/supabase.service';
@@ -52,13 +53,13 @@ export class SpringService {
       );
   }
 
-  isNewPlayer(user: User): Observable<boolean> {
+  isNewPlayer(email: string): Observable<boolean> {
 
-    return this.supabaseService.getData(`player?user=eq.${user.email}&select=*`, environment.supabaseKey).
+    return this.supabaseService.getData(`player?user=eq.${email}&select=*`, environment.supabaseKey).
       pipe(
         map((response) => {
 
-          if (response.length === 0) {
+          if (response[0].type == null) {
 
             return true;
 

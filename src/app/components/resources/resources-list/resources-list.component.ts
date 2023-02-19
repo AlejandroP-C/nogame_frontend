@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SupabaseService } from 'src/app/services/supabase/supabase.service';
 
 @Component({
@@ -9,26 +9,28 @@ import { SupabaseService } from 'src/app/services/supabase/supabase.service';
 })
 export class ResourcesListComponent implements OnInit {
 
+  display: boolean = false;
   structures: any[] = [];
 
   constructor(
     private supabaseService: SupabaseService,
-    private activatedRouter: ActivatedRoute
+    private activatedRouter: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
 
     this.activatedRouter.params.subscribe(params => {
       this.supabaseService.getStructuresInPlanet(params['id']).subscribe(
-        (response) => { 
-          console.log(response);
+        (response) => {
           this.structures = response;
+          if (this.structures.length === 0) { this.display = true }
         }
       );
-    })
-
-    console.log(this.structures);
+    });
 
   }
+
+  redirect(): void { this.router.navigate(['main']) }
 
 }

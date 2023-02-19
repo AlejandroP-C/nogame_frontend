@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { Planet } from '../interfaces/planet';
 import { SupabaseService } from './supabase/supabase.service';
 
 @Injectable({
@@ -31,15 +32,15 @@ export class LocalService {
       delete tableUser[0].password;
       localStorage.setItem('user', JSON.stringify(tableUser[0]));
     });
-    
-    this.supabaseService.getPlayerData(email).subscribe((tablePlayer) => { 
-      localStorage.setItem('player', JSON.stringify(tablePlayer[0])) 
+
+    this.supabaseService.getPlayerData(email).subscribe((tablePlayer) => {
+      localStorage.setItem('player', JSON.stringify(tablePlayer[0]))
     });
 
-    this.supabaseService.getPlanetData(email).subscribe((tablePlanet) => { 
-      localStorage.setItem('planet', JSON.stringify(tablePlanet[0])) 
+    this.supabaseService.getPlanetData(email).subscribe((tablePlanet) => {
+      localStorage.setItem('planet', JSON.stringify(tablePlanet[0]))
     });
-    
+
     localStorage.setItem('userTk', JSON.stringify(Token));
 
   }
@@ -58,9 +59,27 @@ export class LocalService {
 
   }
 
-  logout() { 
+  logout() {
     localStorage.clear();
     this.router.navigate(['login']);
+  }
+
+  createRandomPlanet(playerEmail: string, isFirst: boolean): Planet {
+
+    function generateRandomString(length: number) {
+      let result = '';
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    }
+
+    const planet : Planet = { name: generateRandomString(16), player: playerEmail, image: Math.floor(Math.random() * 49).toString(), first: isFirst }
+
+    return planet;
+
   }
 
 }
