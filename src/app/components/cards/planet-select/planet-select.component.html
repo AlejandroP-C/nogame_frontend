@@ -1,0 +1,11 @@
+<app-logout-button></app-logout-button>
+<app-panel-menu></app-panel-menu>
+
+<div class="container">
+    <div class="cards">
+        <div *ngFor="let planet of planets">
+            <div class="world" [style.background]="'url(/assets/images/planets/' + planet.image + '.png)'" (click)="change(planet.id)"></div>
+            <p [ngStyle]="{'color': (planet.first == true) ? '#ffff00' : '#ffffff'}"><i *ngIf="planet.first == true" class="fa-solid fa-star"></i>{{ planet.name }}</p>
+        </div>
+    </div>
+</div>

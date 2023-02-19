@@ -14,7 +14,7 @@ export class PlayerTypeComponent implements OnInit {
 
   @Input() user: User = JSON.parse(localStorage.getItem('user')!);
   @Input() player: Player = JSON.parse(localStorage.getItem('player')!);
-  
+
   constructor(
     private supabaseService: SupabaseService,
     private router: Router
@@ -23,11 +23,11 @@ export class PlayerTypeComponent implements OnInit {
   pickType(typeSelected: string) {
 
     let updtatePayer = { ...this.player, type: typeSelected };
+
     this.supabaseService.updateData(`player?user=eq.${this.user.email}&select=*`, environment.supabaseKey, updtatePayer).subscribe(() => {
 
       this.supabaseService.getPlayerData(this.user.email).subscribe((tablePlayer) => {
-        console.log(tablePlayer[0]);
-        localStorage.setItem('player', JSON.stringify(tablePlayer[0]))
+        localStorage.setItem('player', JSON.stringify(tablePlayer[0]));
         this.router.navigate(['/main']);
       });
 

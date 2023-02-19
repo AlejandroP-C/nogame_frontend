@@ -15,6 +15,7 @@ import { UserProfileComponent } from './components/authentication/user-profile/u
 import { LogoutButtonComponent } from './components/shared/logout-button/logout-button.component';
 import { ResourcesListComponent } from './components/resources/resources-list/resources-list.component';
 import { ResourcesItemComponent } from './components/resources/resources-item/resources-item.component';
+import { PlanetSelectComponent } from './components/cards/planet-select/planet-select.component';
 
 //? Angular Vanilla
 import { HttpClientModule } from '@angular/common/http';
@@ -41,6 +42,7 @@ import { TableModule } from 'primeng/table';
     LogoutButtonComponent,
     ResourcesListComponent,
     ResourcesItemComponent,
+    PlanetSelectComponent,
   ],
   imports: [
     BrowserModule,

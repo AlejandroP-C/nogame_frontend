@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
-import { LocalService } from 'src/app/services/local.service';
 import { SpringService } from 'src/app/services/spring.service';
-import { SupabaseService } from 'src/app/services/supabase/supabase.service';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +16,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private spring: SpringService,
-    private supabaseService: SupabaseService,
-    private localService: LocalService,
     private router: Router
   ) { }
 

@@ -12,6 +12,7 @@ div.world {
     box-shadow: inset 0 0 20px #000, inset -70px -10px 20px #000000ad;
     animation: world 35s linear infinite;
     opacity: .8;
+    cursor: pointer;
 }
 
 @keyframes world {

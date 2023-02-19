@@ -2,5 +2,5 @@
 <app-panel-menu></app-panel-menu>
 
 <div class="container">
-    <div class="world" [style.background]="'url(/assets/images/planets/' + planet.image + '.png)'"></div>
+    <div class="world" [style.background]="'url(/assets/images/planets/' + planet.image + '.png)'" (click)="showPlanetList()"></div>
 </div>
