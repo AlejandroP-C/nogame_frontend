@@ -1,0 +1,19 @@
+<app-logout-button></app-logout-button>
+<app-panel-menu></app-panel-menu>
+<div class="content">
+    <ul class="cards">
+        <app-resources-item [structure]="structure" *ngFor="let structure of structures"></app-resources-item>
+    </ul>
+</div>
+
+<p-dialog header="Atención" [(visible)]="display" [closable]="false"
+    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '30vw'}" [draggable]="false"
+    [resizable]="false">
+
+    <p>Este planeta no tiene recursos actualmente.</p>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="display=false" (click)="redirect()" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template>
+
+</p-dialog>

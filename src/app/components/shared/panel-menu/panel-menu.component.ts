@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Planet } from 'src/app/interfaces/planet';
 
 @Component({
   selector: 'app-panel-menu',
@@ -7,6 +8,8 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./panel-menu.component.scss']
 })
 export class PanelMenuComponent implements OnInit {
+
+  @Input() planet: Planet = JSON.parse(localStorage.getItem('planet')!);
 
   items!: MenuItem[];
 
@@ -24,7 +27,16 @@ export class PanelMenuComponent implements OnInit {
       {
         label: 'Recursos',
         icon: 'pi pi-pw pi-box',
-        routerLink: ['/resources']
+        routerLink: ['/resources/' + this.planet.id]
+      },
+      {
+        label: '',
+        icon: '',
+      },
+      {
+        label: 'Cuenta',
+        icon: 'pi pi-pw pi-user',
+        routerLink: ['/account']
       }
     ];
   }

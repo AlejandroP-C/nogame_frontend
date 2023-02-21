@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Planet } from 'src/app/interfaces/planet';
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  @Input() planet: Planet = JSON.parse(localStorage.getItem('planet')!);
 
-  ngOnInit(): void {
-  }
+  constructor(private router: Router) { }
+
+  ngOnInit(): void { }
+
+  showPlanetList(): void { this.router.navigate(['planet-select']) }
 
 }

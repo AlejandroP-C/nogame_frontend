@@ -11,10 +11,13 @@ import { SpringService } from 'src/app/services/spring.service';
 export class LoginComponent implements OnInit {
 
   email!: string;
-
   password!: string;
+  display: boolean = false;
 
-  constructor( private spring: SpringService, private router: Router ) { }
+  constructor(
+    private spring: SpringService,
+    private router: Router
+  ) { }
 
   public onSubmit(): void {
 
@@ -22,10 +25,14 @@ export class LoginComponent implements OnInit {
 
     this.spring.login(user).subscribe({
       next: user => {
-        console.log(user);
-        this.router.navigate(['/type']);
-      },
-      error: err => { console.log(err); }
+        this.spring.isNewPlayer(user.email).subscribe(
+          (response) => {
+            if (response) {
+              this.router.navigate(['/type']);
+            } else { this.router.navigate(['/main']) }
+          }
+        );
+      }
     });
 
   }

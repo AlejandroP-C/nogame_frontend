@@ -10,17 +10,24 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { PlayerTypeComponent } from './components/cards/player-type/player-type.component';
 import { PanelMenuComponent } from './components/shared/panel-menu/panel-menu.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { UserProfileComponent } from './components/authentication/user-profile/user-profile.component';
+import { LogoutButtonComponent } from './components/shared/logout-button/logout-button.component';
+import { ResourcesListComponent } from './components/resources/resources-list/resources-list.component';
+import { ResourcesItemComponent } from './components/resources/resources-item/resources-item.component';
+import { PlanetSelectComponent } from './components/cards/planet-select/planet-select.component';
 
 //? Angular Vanilla
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //? PrimeNG
 import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
-import { MainPageComponent } from './components/main-page/main-page.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -30,7 +37,12 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     PlayerTypeComponent,
     PanelMenuComponent,
     PanelMenuComponent,
-    MainPageComponent
+    MainPageComponent,
+    UserProfileComponent,
+    LogoutButtonComponent,
+    ResourcesListComponent,
+    ResourcesItemComponent,
+    PlanetSelectComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +53,9 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     InputTextModule,
     DialogModule,
     ButtonModule,
-    PanelMenuModule
+    PanelMenuModule,
+    ReactiveFormsModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,7 +19,7 @@
         
         <div class="send">
 
-            <button class="login">
+            <button *ngIf="loginForm.form.valid" class="login">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -40,3 +40,16 @@
     </form>
     
 </div>
+
+<p-dialog [(visible)]="display" [closable]="false"
+    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '20vw'}" [draggable]="false"
+    [resizable]="false">
+
+    <p>¡Credenciales incorrectas!</p>
+    <p>Vuelve a intentarlo</p>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="display=false" label="De acuerdo" styleClass="p-button-text"></p-button>
+    </ng-template>
+
+</p-dialog>

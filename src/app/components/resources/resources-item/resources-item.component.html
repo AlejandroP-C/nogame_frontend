@@ -1,0 +1,20 @@
+<li>
+    <div class="card">
+        <img [src]="'/assets/images/mines/' + structure.type + '.png'" class="card__image" alt="" />
+        <div class="card__overlay">
+            <div class="card__header">
+                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                    fill="#8f8383"
+                    d="M 40 80 c 22 0 40 -22 40 -40 v 40 Z" />
+                </svg>
+                <img class="card__thumb" src="/assets/images/playerTypes/commandant.jpg" alt="" />
+                <div class="card__header-text">
+                    <h3 class="card__title">{{ structure.type }}</h3>
+                    <span class="card__status">"Structure Level"</span>
+                </div>
+            </div>
+            <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+    </div>
+</li>

@@ -4,21 +4,21 @@
 
 <div class="container">
 
-    <div class="commandant">
+    <div class="commandant" (click)="pickType('commandant')">
         <img src="/assets/images/playerTypes/commandant.jpg" alt="Comandante">
         <div class="overlay">
             <div class="text">Comandante</div>
         </div>
     </div>
 
-    <div class="miner">
+    <div class="miner" (click)="pickType('miner')">
         <img src="/assets/images/playerTypes/miner.jpg" alt="Especialista en mineria">
         <div class="overlay">
             <div class="text">Especialista en mineria</div>
         </div>
     </div>
 
-    <div class="researcher">
+    <div class="researcher" (click)="pickType('researcher')">
         <img src="/assets/images/playerTypes/researcher.jpg" alt="Científico">
         <div class="overlay">
             <div class="text">Científico</div>

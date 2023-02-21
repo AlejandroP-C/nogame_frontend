@@ -1,0 +1,32 @@
+@import url('https://fonts.cdnfonts.com/css/neuropol-x');
+
+:host ::ng-deep .p-panelmenu .p-panelmenu-header-link {
+    font-family: 'Neuropol X Free', sans-serif;
+    color: aliceblue;
+    background-color: transparent;
+    font-weight: 500;
+    border: none;
+}
+
+:host ::ng-deep .p-panelmenu .p-panelmenu-header:not(.p-highlight):not(.p-disabled) > a:hover {
+    background-color: transparent;
+    color: aliceblue;
+    font-weight: 700;
+}
+
+:host ::ng-deep .p-panelmenu .p-panelmenu-header > a:focus,
+:host ::ng-deep .p-panelmenu .p-panelmenu-header > a:focus:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+:host ::ng-deep .p-panelmenu .p-panelmenu-header.p-highlight > a,
+:host ::ng-deep .p-panelmenu .p-panelmenu-header.p-highlight > a:hover,
+:host ::ng-deep .p-panelmenu .p-panelmenu-header.p-highlight > a:focus,
+:host ::ng-deep .p-panelmenu .p-panelmenu-header.p-highlight > a:focus-visible {
+    font-family: 'Neuropol X Free', sans-serif;
+    color: aliceblue;
+    background-color: transparent;
+    font-weight: 500;
+    border: none;
+}

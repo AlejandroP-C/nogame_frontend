@@ -1,5 +1,6 @@
+<app-logout-button></app-logout-button>
 <app-panel-menu></app-panel-menu>
 
 <div class="container">
-    <div class="world"></div>
+    <div class="world" [style.background]="'url(/assets/images/planets/' + planet.image + '.png)'" (click)="showPlanetList()"></div>
 </div>
