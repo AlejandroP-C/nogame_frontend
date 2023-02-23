@@ -6,14 +6,19 @@ import { HttpHeaders } from "@angular/common/http";
 
 export const environment = {
   production: false,
-  supabaseUrl: 'https://njazhunfzftqfnmubrux.supabase.co',
-  supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qYXpodW5memZ0cWZubXVicnV4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQ4NDM1MTIsImV4cCI6MTk5MDQxOTUxMn0.GuAftkpd1b9Eg4dSZvbPxsdahiXNkc2KqWt68yNQ4oc',
+  springUrl: 'http://localhost:8080'
 }
 
 export const httpOptions = {
   headers: new HttpHeaders({
-    "apiKey": environment.supabaseKey,
     "Content-Type": "application/json",
+  }),
+};
+
+export const httpAuthHeaders = {
+  headers: new HttpHeaders({
+    "Content-Type": "application/json",
+    "Authorization": "Bearer " + localStorage.getItem('userTk'),
   }),
 };
 

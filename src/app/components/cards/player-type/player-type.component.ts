@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Player } from 'src/app/interfaces/player';
-import { User } from 'src/app/interfaces/user';
-import { SupabaseService } from 'src/app/services/supabase/supabase.service';
-import { environment } from 'src/environments/environment';
+import { SpringService } from 'src/app/services/spring.service';
 
 @Component({
   selector: 'app-player-type',
@@ -12,30 +10,31 @@ import { environment } from 'src/environments/environment';
 })
 export class PlayerTypeComponent implements OnInit {
 
-  @Input() user: User = JSON.parse(localStorage.getItem('user')!);
+  typesList: any[] = [];
+
+  // @Input() user: User = JSON.parse(localStorage.getItem('user')!);
   @Input() player: Player = JSON.parse(localStorage.getItem('player')!);
 
   constructor(
-    private supabaseService: SupabaseService,
+    private springService: SpringService,
     private router: Router
   ) { }
 
-  pickType(typeSelected: string) {
+  pickType(typeSelected: number) {
 
-    let updtatePayer = { ...this.player, type: typeSelected };
-
-    this.supabaseService.updateData(`player?user=eq.${this.user.email}&select=*`, environment.supabaseKey, updtatePayer).subscribe(() => {
-
-      this.supabaseService.getPlayerData(this.user.email).subscribe((tablePlayer) => {
-        localStorage.setItem('player', JSON.stringify(tablePlayer[0]));
+    this.springService.updatePlayerType(this.player.id, typeSelected).subscribe(() => {
+      this.springService.getPlayerById(this.player.id).subscribe((player) => {
+        localStorage.setItem('player', JSON.stringify(player));
         this.router.navigate(['/main']);
-      });
-
+      })
     });
 
   }
 
   ngOnInit(): void {
+    this.springService.getAllTypesList().subscribe((types) => {
+      this.typesList = types;
+    })
   }
 
 }

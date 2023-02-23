@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SupabaseService } from 'src/app/services/supabase/supabase.service';
+// import { SupabaseService } from 'src/app/services/supabase/supabase.service';
 
 @Component({
   selector: 'app-resources-list',
@@ -13,21 +13,21 @@ export class ResourcesListComponent implements OnInit {
   structures: any[] = [];
 
   constructor(
-    private supabaseService: SupabaseService,
+    // private supabaseService: SupabaseService,
     private activatedRouter: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
 
-    this.activatedRouter.params.subscribe(params => {
-      this.supabaseService.getStructuresInPlanet(params['id']).subscribe(
-        (response) => {
-          this.structures = response;
-          if (this.structures.length === 0) { this.display = true }
-        }
-      );
-    });
+    // this.activatedRouter.params.subscribe(params => {
+    //   this.supabaseService.getStructuresInPlanet(params['id']).subscribe(
+    //     (response) => {
+    //       this.structures = response;
+    //       if (this.structures.length === 0) { this.display = true }
+    //     }
+    //   );
+    // });
 
   }
 

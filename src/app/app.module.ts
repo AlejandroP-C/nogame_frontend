@@ -29,6 +29,10 @@ import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { TableModule } from 'primeng/table';
 
+// ? JwtHelperService
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { httpInterceptorProviders } from './_helpers/http.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +61,11 @@ import { TableModule } from 'primeng/table';
     ReactiveFormsModule,
     TableModule
   ],
-  providers: [],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

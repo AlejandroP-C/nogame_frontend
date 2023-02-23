@@ -12,7 +12,7 @@ export class UserProfileComponent implements OnInit {
 
   @Input() player: Player = JSON.parse(localStorage.getItem('player')!);
   @Input() user: User = JSON.parse(localStorage.getItem('user')!);
-  @Input() planet: Planet = JSON.parse(localStorage.getItem('planet')!);
+  @Input() homePlanet: Planet = JSON.parse(localStorage.getItem('homePlanet')!);
 
   constructor() { }
 

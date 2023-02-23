@@ -4,24 +4,10 @@
 
 <div class="container">
 
-    <div class="commandant" (click)="pickType('commandant')">
-        <img src="/assets/images/playerTypes/commandant.jpg" alt="Comandante">
+    <div class="{{type.name}}" *ngFor="let type of typesList" (click)="pickType(type.id)">
+        <img [src]="'/assets/images/playerTypes/' + type.name+'.jpg'" alt="{{type.name}}">
         <div class="overlay">
-            <div class="text">Comandante</div>
-        </div>
-    </div>
-
-    <div class="miner" (click)="pickType('miner')">
-        <img src="/assets/images/playerTypes/miner.jpg" alt="Especialista en mineria">
-        <div class="overlay">
-            <div class="text">Especialista en mineria</div>
-        </div>
-    </div>
-
-    <div class="researcher" (click)="pickType('researcher')">
-        <img src="/assets/images/playerTypes/researcher.jpg" alt="Científico">
-        <div class="overlay">
-            <div class="text">Científico</div>
+            <div class="text">{{type.name}}</div>
         </div>
     </div>
 

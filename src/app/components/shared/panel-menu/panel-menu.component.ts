@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Planet } from 'src/app/interfaces/planet';
+import { Player } from 'src/app/interfaces/player';
+import { SpringService } from 'src/app/services/spring.service';
 
 @Component({
   selector: 'app-panel-menu',
@@ -9,11 +11,12 @@ import { Planet } from 'src/app/interfaces/planet';
 })
 export class PanelMenuComponent implements OnInit {
 
-  @Input() planet: Planet = JSON.parse(localStorage.getItem('planet')!);
+  @Input() currentPlanet: Planet = JSON.parse(localStorage.getItem('currentPlanet')!);
+  @Input() player: Player = JSON.parse(localStorage.getItem("player")!);
 
   items!: MenuItem[];
 
-  constructor() { }
+  constructor(private springService: SpringService) { }
 
 
   ngOnInit(): void {
@@ -27,11 +30,17 @@ export class PanelMenuComponent implements OnInit {
       {
         label: 'Recursos',
         icon: 'pi pi-pw pi-box',
-        routerLink: ['/resources/' + this.planet.id]
+        routerLink: ['/resources/' + this.currentPlanet.id]
       },
       {
         label: '',
         icon: '',
+      },
+      {
+        label: 'Explorar',
+        icon: 'pi pi-pw pi-globe',
+        command: () => { this.springService.exploreNewWorld(this.player).subscribe() },
+        routerLink: ['/planet-select']
       },
       {
         label: 'Cuenta',
