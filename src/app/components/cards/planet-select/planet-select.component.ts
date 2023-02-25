@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Player } from 'src/app/interfaces/player';
-import { SupabaseService } from 'src/app/services/supabase/supabase.service';
+import { SpringService } from 'src/app/services/spring.service';
 
 @Component({
   selector: 'app-planet-select',
@@ -14,19 +14,19 @@ export class PlanetSelectComponent implements OnInit {
 
   planets: any[] = [];
 
-  constructor(private supabaseService: SupabaseService, private router: Router) {}
+  constructor(private springService: SpringService, private router: Router) {}
 
   ngOnInit(): void {
 
-    this.supabaseService.getPlanetData(this.player.user).subscribe((response) => {
-      this.planets = response;
+    this.springService.getPlanetsOfUser(this.player).subscribe((response) => {
+      this.planets = response
     });
 
   }
 
   change(planet: string): void {
     const changePlanet = this.planets.find(obj => obj.id === planet);
-    localStorage.setItem('planet', JSON.stringify(changePlanet));
+    localStorage.setItem('currentPlanet', JSON.stringify(changePlanet));
     this.router.navigate(['main']);
   }
 

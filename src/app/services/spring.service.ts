@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, Subject } from 'rxjs';
+import { map, Observable, Subject, tap } from 'rxjs';
 import { environment, httpOptions } from 'src/environments/environment';
+import { Planet } from '../interfaces/planet';
 import { Player } from '../interfaces/player';
 import { User } from '../interfaces/user';
 import { LocalService } from './local.service';
-import { SupabaseService } from './supabase/supabase.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,37 +14,41 @@ export class SpringService {
 
   constructor(
     private http: HttpClient,
-    private supabaseService: SupabaseService,
     private localService: LocalService) {
   }
 
   userSubject = new Subject<User>();
 
-  login(userInForm: User): Observable<User> {
+  login(userInForm: User): Observable<any> {
 
     return this.http
       .post<{
-        access_token: string,
-        expires_in: string;
-        email: string,
-      }>(`${environment.supabaseUrl}/auth/v1/token?grant_type=password`, JSON.stringify(userInForm), httpOptions)
+        token: string,
+        playerList: any,
+        planetsInfo: any,
+        userInfo: any
+      }>(`${environment.springUrl}/auth/login`, JSON.stringify(userInForm), httpOptions)
       .pipe(
 
         map((response) => {
 
-          this.localService.saveStorageLogin(response.access_token, response.expires_in, userInForm.email);
+          const user: User = response.playerList.userInfo;
+          const player: Player = { id: response.playerList.id, user: response.playerList.userInfo.email, level: response.playerList.level, type: response.playerList.nameType };
+          const homePlanet: Planet = response.playerList.planetsInfo.filter((obj: Planet) => obj.first == true)[0];
+
+          this.localService.saveStorageLogin(response.token, user, player, homePlanet);
 
           return userInForm;
 
         })
       )
-    ;
+      ;
 
   }
 
   register(user: User): Observable<any> {
     return this.http
-      .post<{}>(`${environment.supabaseUrl}/auth/v1/signup`, JSON.stringify(user), httpOptions)
+      .post<{}>(`${environment.springUrl}/auth/register`, JSON.stringify(user), httpOptions)
       .pipe(
         map(() => {
           this.userSubject.next(user);
@@ -53,22 +57,45 @@ export class SpringService {
       );
   }
 
-  isNewPlayer(email: string): Observable<boolean> {
+  isNewPlayer(id: number): Observable<any> {
 
-    return this.supabaseService.getData(`player?user=eq.${email}&select=*`, environment.supabaseKey).
-      pipe(
-        map((response) => {
+    return this.http.get<any[]>(`${environment.springUrl}/api/player/${id}/hasType`);
+    // .pipe( tap((response) => { console.log(response); }) );
 
-          if (response[0].type == null) {
+  }
 
-            return true;
+  getPlanetsOfUser(player: Player): Observable<any> {
+    return this.http
+      .post<{}>(`${environment.springUrl}/api/player/planets`, JSON.stringify(player), httpOptions);
+      // .pipe(tap((response) => { console.log(response); }));
 
-          } else { return false; }
+  }
 
-        })
-      )
-    ;
+  getAllTypesList(): Observable<any> {
+    return this.http.get<any[]>(`${environment.springUrl}/api/type`);
+    // .pipe( tap((response) => { console.log(response); }) );
+  }
 
+  updatePlayerType(idPlayer: number, idType: number): Observable<any> {
+    return this.http.get<any[]>(`${environment.springUrl}/api/player/${idPlayer}/type/${idType}`);
+    // .pipe( tap((response) => { console.log(response); }) );
+  }
+
+  getPlayerById(id: number): Observable<any> {
+    return this.http.get<any[]>(`${environment.springUrl}/api/player/id/${id}`);
+    // .pipe( tap((response) => { console.log(response); }) );
+  }
+
+  exploreNewWorld(player: Player): Observable<any> {
+    return this.http
+      .post<{}>(`${environment.springUrl}/api/planet/explore`, JSON.stringify(player), httpOptions);
+      // .pipe(tap((response) => { console.log(response); }));
+  }
+
+  getResourcesInPlanet(planet: Planet): Observable<any> {
+    return this.http
+    .post<{}>(`${environment.springUrl}/api/storage/planets`, JSON.stringify(planet), httpOptions);
+    // .pipe(tap((response) => { console.log(response); }));
   }
 
 }

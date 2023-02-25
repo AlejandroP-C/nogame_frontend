@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SupabaseService } from 'src/app/services/supabase/supabase.service';
+import { Planet } from 'src/app/interfaces/planet';
+import { SpringService } from 'src/app/services/spring.service';
 
 @Component({
   selector: 'app-resources-list',
@@ -9,24 +10,21 @@ import { SupabaseService } from 'src/app/services/supabase/supabase.service';
 })
 export class ResourcesListComponent implements OnInit {
 
+  @Input() currentPlanet: Planet = JSON.parse(localStorage.getItem('currentPlanet')!);
+
   display: boolean = false;
   structures: any[] = [];
 
   constructor(
-    private supabaseService: SupabaseService,
-    private activatedRouter: ActivatedRoute,
+    private springService: SpringService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
 
-    this.activatedRouter.params.subscribe(params => {
-      this.supabaseService.getStructuresInPlanet(params['id']).subscribe(
-        (response) => {
-          this.structures = response;
-          if (this.structures.length === 0) { this.display = true }
-        }
-      );
+    this.springService.getResourcesInPlanet(this.currentPlanet).subscribe((structuresDB) => {
+      this.structures = structuresDB;
+      if (this.structures.length === 0) { this.display = true }
     });
 
   }

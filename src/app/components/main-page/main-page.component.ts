@@ -9,7 +9,7 @@ import { Planet } from 'src/app/interfaces/planet';
 })
 export class MainPageComponent implements OnInit {
 
-  @Input() planet: Planet = JSON.parse(localStorage.getItem('planet')!);
+  @Input() currentPlanet: Planet = JSON.parse(localStorage.getItem('currentPlanet')!);
 
   constructor(private router: Router) { }
 

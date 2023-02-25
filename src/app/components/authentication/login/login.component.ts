@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Player } from 'src/app/interfaces/player';
 import { User } from 'src/app/interfaces/user';
 import { SpringService } from 'src/app/services/spring.service';
 
@@ -23,17 +24,16 @@ export class LoginComponent implements OnInit {
 
     let user: User = { email: this.email, password: this.password };
 
-    this.spring.login(user).subscribe({
-      next: user => {
-        this.spring.isNewPlayer(user.email).subscribe(
-          (response) => {
-            if (response) {
-              this.router.navigate(['/type']);
-            } else { this.router.navigate(['/main']) }
-          }
-        );
+    this.spring.login(user).subscribe(
+      () => {
+        let player: Player = JSON.parse(localStorage.getItem('player')!);
+        this.spring.isNewPlayer(player.id).subscribe((response) => {
+          if (!response) {
+            this.router.navigate(['type'])
+          } else { this.router.navigate(['main']) }
+        });
       }
-    });
+    );
 
   }
 

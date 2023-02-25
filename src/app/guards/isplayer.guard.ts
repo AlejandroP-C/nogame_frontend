@@ -1,6 +1,6 @@
 import { Injectable, Input } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { User } from '../interfaces/user';
+import { Player } from '../interfaces/player';
 import { SpringService } from '../services/spring.service';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { SpringService } from '../services/spring.service';
 })
 export class IsplayerGuard implements CanActivate {
 
-  @Input() user: User = JSON.parse(localStorage.getItem('user')!);
+  @Input() player: Player = JSON.parse(localStorage.getItem('player')!);
 
   constructor(private spring: SpringService) { }
 
@@ -17,9 +17,9 @@ export class IsplayerGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
 
-    let isNewPlayer = this.spring.isNewPlayer(this.user.email).subscribe((response) => { return response });
+    let isNewPlayer = this.spring.isNewPlayer(this.player.id).subscribe((response) => { return response });
 
-    if (isNewPlayer) { return false } else { return true; }
+    if (!isNewPlayer) { return false } else { return true; }
 
   }
 
