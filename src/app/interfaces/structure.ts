@@ -1,4 +1,5 @@
 export interface Structure {
     id: string,
-    type: string
+    type: string,
+    level: number
 }

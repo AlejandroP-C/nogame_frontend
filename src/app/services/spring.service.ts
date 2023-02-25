@@ -92,4 +92,10 @@ export class SpringService {
       // .pipe(tap((response) => { console.log(response); }));
   }
 
+  getResourcesInPlanet(planet: Planet): Observable<any> {
+    return this.http
+    .post<{}>(`${environment.springUrl}/api/storage/planets`, JSON.stringify(planet), httpOptions);
+    // .pipe(tap((response) => { console.log(response); }));
+  }
+
 }
