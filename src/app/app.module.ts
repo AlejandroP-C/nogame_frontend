@@ -16,6 +16,7 @@ import { LogoutButtonComponent } from './components/shared/logout-button/logout-
 import { ResourcesListComponent } from './components/resources/resources-list/resources-list.component';
 import { ResourcesItemComponent } from './components/resources/resources-item/resources-item.component';
 import { PlanetSelectComponent } from './components/cards/planet-select/planet-select.component';
+import { BattlesComponent } from './components/battles/battles.component';
 
 //? Angular Vanilla
 import { HttpClientModule } from '@angular/common/http';
@@ -47,6 +48,7 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     ResourcesListComponent,
     ResourcesItemComponent,
     PlanetSelectComponent,
+    BattlesComponent,
   ],
   imports: [
     BrowserModule,
