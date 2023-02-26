@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { UserProfileComponent } from './components/authentication/user-profile/user-profile.component';
+import { BattlesComponent } from './components/battles/battles.component';
 import { PlanetSelectComponent } from './components/cards/planet-select/planet-select.component';
 import { PlayerTypeComponent } from './components/cards/player-type/player-type.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path: 'resources/:id', component: ResourcesListComponent, canActivate: [NoLoggedGuard] },
 
   { path: 'account', component: UserProfileComponent, canActivate: [NoLoggedGuard] },
+
+  { path: 'battles', component: BattlesComponent, canActivate: [NoLoggedGuard] },
 
   { path: '', pathMatch: 'full', redirectTo: 'login' }
 
